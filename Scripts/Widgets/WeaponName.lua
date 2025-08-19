@@ -1,0 +1,31 @@
+-- Register the behaviour
+behaviour("WeaponName")
+
+function WeaponName:Start()
+	self.script.AddValueMonitor("MonitorActiveWeapon", "OnActiveWeaponChanged")
+	self.prefix = "    "
+end
+
+function WeaponName:MonitorActiveWeapon()
+	if Player.actor == nil then return nil end
+
+	return Player.actor.activeWeapon
+end
+
+function WeaponName:OnActiveWeaponChanged(activeWeapon)
+	if activeWeapon == nil then
+		self.targets.Label.text = self.prefix
+		return 
+	end
+
+	local weaponEntry = activeWeapon.weaponEntry
+	local weaponName = nil
+	if weaponEntry == nil then
+		weaponName = self.prefix .. string.upper(activeWeapon.gameObject.name)
+	else
+		weaponName = self.prefix .. string.upper(weaponEntry.name)
+	end
+
+	self.targets.DummyLabel.text = weaponName
+	self.targets.Label.text = weaponName
+end
