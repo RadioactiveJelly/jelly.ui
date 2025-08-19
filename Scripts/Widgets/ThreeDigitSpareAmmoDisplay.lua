@@ -16,6 +16,8 @@ function ThreeDigitSpareAmmoDisplay:MonitorActiveWeapon()
 end
 
 function ThreeDigitSpareAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
+	if activeWeapon == nil then return end
+	
 	self.currentMaxSpareAmmo = activeWeapon.maxSpareAmmo
 end
 

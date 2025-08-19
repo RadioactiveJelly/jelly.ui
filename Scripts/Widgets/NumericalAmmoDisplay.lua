@@ -14,6 +14,8 @@ function NumericalAmmoDisplay:MonitorActiveWeapon()
 end
 
 function NumericalAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
+	if activeWeapon == nil then return end
+	
 	self.currentMaxAmmo = activeWeapon.maxAmmo
 end
 
