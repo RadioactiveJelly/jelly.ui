@@ -9,8 +9,9 @@ end
 
 function NumericalAmmoDisplay:MonitorActiveWeapon()
 	if Player.actor == nil then return nil end
+	if Player.actor.activeWeapon == nil then return nil end
 
-	return Player.actor.activeWeapon
+	return Player.actor.activeWeapon.activeSubWeapon
 end
 
 function NumericalAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
@@ -23,7 +24,7 @@ function NumericalAmmoDisplay:MonitorAmmoCount()
 	if Player.actor == nil then return end
 	if Player.actor.activeWeapon == nil then return end
 
-	return Player.actor.activeWeapon.ammo
+	return Player.actor.activeWeapon.activeSubWeapon.ammo
 end
 
 function NumericalAmmoDisplay:OnAmmoCountChanged(ammo)

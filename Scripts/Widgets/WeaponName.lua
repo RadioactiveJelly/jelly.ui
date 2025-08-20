@@ -8,8 +8,9 @@ end
 
 function WeaponName:MonitorActiveWeapon()
 	if Player.actor == nil then return nil end
+	if Player.actor.activeWeapon == nil then return nil end
 
-	return Player.actor.activeWeapon
+	return Player.actor.activeWeapon.activeSubWeapon
 end
 
 function WeaponName:OnActiveWeaponChanged(activeWeapon)

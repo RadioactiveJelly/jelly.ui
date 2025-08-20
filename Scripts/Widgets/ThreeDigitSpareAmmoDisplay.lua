@@ -11,8 +11,9 @@ end
 
 function ThreeDigitSpareAmmoDisplay:MonitorActiveWeapon()
 	if Player.actor == nil then return nil end
+	if Player.actor.activeWeapon == nil then return nil end
 
-	return Player.actor.activeWeapon
+	return Player.actor.activeWeapon.activeSubWeapon
 end
 
 function ThreeDigitSpareAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
@@ -25,11 +26,11 @@ function ThreeDigitSpareAmmoDisplay:MonitorAmmoCount()
 	if Player.actor == nil then return end
 	if Player.actor.activeWeapon == nil then return end
 
-	return Player.actor.activeWeapon.spareAmmo
+	return Player.actor.activeWeapon.activeSubWeapon.spareAmmo
 end
 
 function ThreeDigitSpareAmmoDisplay:OnAmmoCountChanged(spareAmmo)
-	if spareAmmo == nil then return end
+	if spareAmmo == nil or self.currentMaxSpareAmmo == nil then self.targets.Number.text = "" return end
 
 	if spareAmmo == -1 then
 		self.targets.Number.text = ""
