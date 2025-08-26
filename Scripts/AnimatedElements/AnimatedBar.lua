@@ -66,11 +66,6 @@ function AnimatedBar:UpdateBarToAnimate()
 	local targetScale = self.currentScale
 	local currentFill = self.barToAnimate.fillAmount
 
-	--if targetScale == currentFill then return false end
-
-	--local delta = self.animationSpeed * Time.deltaTime
-	--local direction = (targetScale > currentFill) and 1 or -1
-	--self.barToAnimate.fillAmount = self.barToAnimate.fillAmount + delta * direction
 	currentFill = Mathf.MoveTowards(currentFill, targetScale, self.animationSpeed * Time.deltaTime)
 	self.barToAnimate.fillAmount = currentFill
 
