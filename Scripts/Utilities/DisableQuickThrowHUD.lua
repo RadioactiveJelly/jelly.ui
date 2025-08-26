@@ -7,7 +7,7 @@ end
 
 function DisableQuickThrowHUD:DisableQuickThrowHUD()
 	return function()
-		coroutine.yield(WaitForSeconds(0.25))
+		coroutine.yield(nil)
 		local quickThrowObj = self.gameObject.find("QuickThrow")
 		if quickThrowObj then
 			self.quickThrow = quickThrowObj.GetComponent(ScriptedBehaviour)

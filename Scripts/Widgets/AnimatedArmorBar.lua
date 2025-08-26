@@ -12,12 +12,8 @@ function AnimatedArmorBar:DelayedStart()
 		local armorObj = self.gameObject.Find("PlayerArmor")
 		if armorObj then
 			self.playerArmor = armorObj.GetComponent(ScriptedBehaviour)
-			self.playerArmor.self:DisableHUD()
 			self.script.AddValueMonitor("MonitorCurrentArmorHealth","OnArmorHealthChanged")
 			self.script.AddValueMonitor("MonitorMaxArmorHealth","OnMaxArmorHealthChanged")
-			print(self.playerArmor.self.armorHealth)
-			print(self.playerArmor.self.maxArmorHealth)
-			--GameEvents.onActorSpawn.AddListener(self,"OnActorSpawn")
 			self.animatedBar:Initialize(self.playerArmor.self.startingArmorHealth, self.playerArmor.self.maxArmorHealth)
 		else
 			self.animatedBar:Initialize(0,100)
@@ -47,8 +43,4 @@ function AnimatedArmorBar:OnMaxArmorHealthChanged(val)
 	if val == nil then return end
 
 	self.animatedBar:SetMaxValue(val)
-end
-
-function AnimatedArmorBar:OnActorSpawn()
-	
 end
