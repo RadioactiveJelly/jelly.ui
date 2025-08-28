@@ -1,0 +1,17 @@
+{
+  "name": "com.radioactivejellyfish.ui",
+  "version": "1.0.0",
+  "displayName": "Jelly.UI",
+  "description": "Scripts for general UI creation in Ravenfield",
+  "unity": "2020.3",
+  "author": {
+    "name": "RadioactiveJellyfish",
+    "url": "https://github.com/RadioactiveJelly"
+  },
+  "keywords": [
+    "unity",
+    "custom-package",
+    "tools",
+    "ravenfield"
+  ]
+}
