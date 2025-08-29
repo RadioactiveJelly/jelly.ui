@@ -12,4 +12,5 @@ function DisableDefaultHUD:DisableDefaultHUD()
 	PlayerHud.HideUIElement(UIElement.SquadOrderLabel)
 	PlayerHud.HideUIElement(UIElement.SquadMemberInfo)
 	PlayerHud.HideUIElement(UIElement.WeaponInfo)
+	PlayerHud.HideUIElement(UIElement.OverlayText)
 end
