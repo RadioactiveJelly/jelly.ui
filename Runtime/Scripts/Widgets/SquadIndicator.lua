@@ -7,6 +7,7 @@ function SquadIndicator:Start()
 
 	GameEvents.onActorSpawn.AddListener(self,"OnActorSpawn")
 	self.hasSpawned = false
+	self.targets.SquadOrder.text = ""
 end
 
 function SquadIndicator:OnActorSpawn(actor)
@@ -52,12 +53,10 @@ function SquadIndicator:UpdateText()
 	local text = "NO SQUAD"
 	
 	if self.squadCount > 0 then
-		if self.squadOrder ~= "" then
-			text = "SQUAD(" .. self.squadCount .. "): " .. self.squadOrder
-		else
-			text = "SQUAD(" .. self.squadCount .. ")"
-		end
+		self.targets.SquadCount.text = "SQUAD: " .. self.squadCount
+		self.targets.SquadOrder.text = self.squadOrder
+	else
+		self.targets.SquadCount.text = "NO SQUAD"
+		self.targets.SquadOrder.text = ""
 	end
-
-	self.targets.Indicator.text = text
 end
