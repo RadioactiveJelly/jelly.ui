@@ -2,6 +2,8 @@
 behaviour("HeatMeter")
 
 function HeatMeter:Start()
+	self.targets.CanvasGroup.alpha = 0
+	
 	self.script.AddValueMonitor("MonitorActiveWeapon", "OnActiveWeaponChanged")
 	self.script.AddValueMonitor("MonitorHeat", "OnHeatChanged")
 end

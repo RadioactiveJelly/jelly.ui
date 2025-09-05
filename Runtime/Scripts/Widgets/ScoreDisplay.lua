@@ -2,6 +2,7 @@
 behaviour("ScoreDisplay")
 
 function ScoreDisplay:Start()
+	self.targets.CanvasGroup.alpha = 0
 	self.script.StartCoroutine(self:DelayedStart())
 end
 
