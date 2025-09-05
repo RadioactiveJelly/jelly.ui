@@ -3,12 +3,17 @@ behaviour("NumericalDisplay")
 
 function NumericalDisplay:Start()
 	self.digitLimit = self.targets.DataContainer.GetInt("MaxDigitLimit")
+	self.zeroOpacity = self.targets.DataContainer.GetInt("ZeroOpacity")
 	self.displayMax = self.targets.DataContainer.GetFloat("DisplayMax")
 	self.zeroColor = self.targets.DataContainer.GetColor("ZeroColor")
 	self.displayZeroes = self.targets.DataContainer.GetBool("DisplayZeroes")
 
 	self.currentValue = 0
 	self.maximumValue = 0
+
+	local opacity = self.zeroOpacity
+	local hexOpacity = string.format("%02X", opacity)
+	self.opacityTag = "<alpha=#" .. hexOpacity .. ">"
 end
 
 function NumericalDisplay:SetColor(color)
@@ -38,10 +43,14 @@ function NumericalDisplay:GetDigits(num)
 	return (num == 0) and 1 or Mathf.Floor(Mathf.Log10(Mathf.Abs(num))) + 1
 end
 
+function NumericalDisplay:Empty()
+	self.targets.Number.text = ""
+end
+
 function NumericalDisplay:UpdateDisplay()
 	local val = Mathf.Ceil(self.currentValue)
 	val = Mathf.Clamp(val,0,self.displayMax)
-	
+
 	local text = self.colorRichTextTag .. val .. "</color>"
 
 	if self.displayZeroes then
@@ -54,7 +63,7 @@ function NumericalDisplay:UpdateDisplay()
 
 		local zeroRichTextTag = ColorScheme.RichTextColorTag(self.zeroColor)
 
-		self.targets.Number.text = zeroRichTextTag .. prefix .. "</color>" .. text
+		self.targets.Number.text = zeroRichTextTag .. self.opacityTag .. prefix .. "</color>" .. "</color>" .. text
 	else
 		self.targets.Number.text = text
 	end
