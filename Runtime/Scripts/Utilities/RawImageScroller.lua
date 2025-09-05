@@ -1,4 +1,4 @@
--- Register the behaviour
+--Scrolls a RawImage based on the values given on the DataContainer
 behaviour("RawImageScroller")
 
 function RawImageScroller:Start()

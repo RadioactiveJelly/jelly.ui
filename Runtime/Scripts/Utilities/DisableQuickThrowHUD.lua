@@ -1,4 +1,4 @@
--- Register the behaviour
+--Disables the QuickThrow HUD
 behaviour("DisableQuickThrowHUD")
 
 function DisableQuickThrowHUD:Start()

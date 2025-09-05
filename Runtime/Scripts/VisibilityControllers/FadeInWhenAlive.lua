@@ -1,4 +1,5 @@
--- Register the behaviour
+--Fades in the target CanvasGroup when the actor is alive.
+--Fades out when the actor is dead.
 behaviour("FadeInWhenAlive")
 
 function FadeInWhenAlive:Start()

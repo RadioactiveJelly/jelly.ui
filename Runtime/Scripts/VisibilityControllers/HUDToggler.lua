@@ -1,4 +1,4 @@
--- Register the behaviour
+--Sets the visibility of the target canvas group based on the hudPlayerEnabled boolean
 behaviour("HUDToggler")
 
 function HUDToggler:Start()

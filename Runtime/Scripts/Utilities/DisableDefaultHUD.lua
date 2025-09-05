@@ -1,4 +1,4 @@
--- Register the behaviour
+--Disables the vanilla Ravenfield HUD
 behaviour("DisableDefaultHUD")
 
 function DisableDefaultHUD:Start()

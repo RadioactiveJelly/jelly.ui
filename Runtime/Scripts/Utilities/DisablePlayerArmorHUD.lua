@@ -1,3 +1,4 @@
+--Disables the PlayerArmor HUD
 behaviour("DisablePlayerArmorHUD")
 
 function DisablePlayerArmorHUD:Start()

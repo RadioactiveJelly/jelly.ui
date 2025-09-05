@@ -1,4 +1,5 @@
--- Register the behaviour
+--Sets the target canvas group's alpha to 1 when the player is alive.
+--Sets the alpha to 0 when the player is dead.
 behaviour("ShowWhenAlive")
 
 function ShowWhenAlive:Start()

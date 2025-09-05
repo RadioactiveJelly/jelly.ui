@@ -1,4 +1,5 @@
--- Register the behaviour
+--Fades in when the player is in a vehicle
+--Fades out when the player exits the vehicle
 behaviour("FadeInWhenInVehicle")
 
 function FadeInWhenInVehicle:Start()
