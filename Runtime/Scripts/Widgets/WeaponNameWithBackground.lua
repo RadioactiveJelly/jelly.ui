@@ -1,21 +1,21 @@
 -- Register the behaviour
-behaviour("WeaponName")
+behaviour("WeaponNameWithBackground")
 
-function WeaponName:Start()
+function WeaponNameWithBackground:Start()
 	self.script.AddValueMonitor("MonitorActiveWeapon", "OnActiveWeaponChanged")
 	self.prefix = self.targets.DataContainer.GetString("Prefix")
 end
 
-function WeaponName:MonitorActiveWeapon()
+function WeaponNameWithBackground:MonitorActiveWeapon()
 	if Player.actor == nil then return nil end
 	if Player.actor.activeWeapon == nil then return nil end
 
 	return Player.actor.activeWeapon.activeSubWeapon
 end
 
-function WeaponName:OnActiveWeaponChanged(activeWeapon)
+function WeaponNameWithBackground:OnActiveWeaponChanged(activeWeapon)
 	if activeWeapon == nil then
-		self.targets.Label.text = self.prefix
+		self.targets.TextWithBackground.self:SetText(self.prefix)
 		return 
 	end
 
