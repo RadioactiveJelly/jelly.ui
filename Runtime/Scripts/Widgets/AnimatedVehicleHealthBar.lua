@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses the AnimatedBar script to display the health of the player's current vehicle
 behaviour("AnimatedVehicleHealthBar")
 
 function AnimatedVehicleHealthBar:Start()

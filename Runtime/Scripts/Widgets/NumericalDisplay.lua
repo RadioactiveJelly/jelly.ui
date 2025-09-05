@@ -1,4 +1,5 @@
--- Register the behaviour
+--Numerical display that can be configured.
+--Has settings to prefix 0s to the given values based on the max value given to the display.
 behaviour("NumericalDisplay")
 
 function NumericalDisplay:Start()

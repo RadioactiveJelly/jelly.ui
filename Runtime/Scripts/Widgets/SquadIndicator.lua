@@ -1,4 +1,5 @@
--- Register the behaviour
+--Displays the player's current squad count and order
+--Uses TMPRO_UGUI
 behaviour("SquadIndicator")
 
 function SquadIndicator:Start()

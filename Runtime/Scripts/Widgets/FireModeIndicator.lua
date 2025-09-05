@@ -1,4 +1,4 @@
--- Register the behaviour
+--Script that displays the current fire mode using a TMPRO_UGUI object
 behaviour("FireModeIndicator")
 
 function FireModeIndicator:Start()

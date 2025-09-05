@@ -1,4 +1,6 @@
--- Register the behaviour
+--Displays the UI sprite of the gear slot the widget is assigned to.
+--Also displays the amount of ammo left the gear in the slot has.
+--When QuickThrow is active, will also show keybinds if applicable.
 behaviour("GearWidget")
 
 function GearWidget:Start()

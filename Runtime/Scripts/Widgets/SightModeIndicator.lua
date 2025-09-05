@@ -1,4 +1,4 @@
--- Register the behaviour
+--Simple script that displays the player's current weapon sight mode using a TMPRO_UGUI object.
 behaviour("SightModeIndicator")
 
 function SightModeIndicator:Awake()

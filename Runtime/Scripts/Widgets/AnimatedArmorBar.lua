@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses the AnimatedBar script to display the current armor health from Player Armor
 behaviour("AnimatedArmorBar")
 
 function AnimatedArmorBar:Start()

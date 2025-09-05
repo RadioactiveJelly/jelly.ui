@@ -1,6 +1,5 @@
--- Register the behaviour
+--Points towards the source of the damage.
 behaviour("DamageIndicator")
-
 
 function DamageIndicator:Init(targetPos)
 	self.lifetime = 2.5

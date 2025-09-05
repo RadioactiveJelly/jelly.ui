@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses an animated bar to display the recharge progress of the player's gear from Gear Recharge
 behaviour("GearRechargeWidget")
 
 function GearRechargeWidget:Start()

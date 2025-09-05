@@ -1,4 +1,4 @@
--- Register the behaviour
+--A script that animates a TMPRO_UGUI object to the given value.
 behaviour("AnimatedNumber")
 
 function AnimatedNumber:Awake()
@@ -8,6 +8,7 @@ function AnimatedNumber:Awake()
 	self.animationSpeed = 2.5
 end
 
+--Snap the number to the given value
 function AnimatedNumber:SnapToValue(val)
 	self.value = val
 	self.displayValue = val
@@ -16,6 +17,7 @@ function AnimatedNumber:SnapToValue(val)
 	self.isAnimating = false
 end
 
+--Animate towards the given value
 function AnimatedNumber:SetValue(val)
 	self.value = val
 

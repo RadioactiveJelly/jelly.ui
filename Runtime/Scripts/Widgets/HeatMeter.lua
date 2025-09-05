@@ -1,4 +1,4 @@
--- Register the behaviour
+--A simple meter script to display the current weapon's heat values
 behaviour("HeatMeter")
 
 function HeatMeter:Start()

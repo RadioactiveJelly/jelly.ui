@@ -1,4 +1,4 @@
--- Register the behaviour
+--TMPRO_UGUI based display for the player's current vehicle name.
 behaviour("ActiveVehicleName")
 
 function ActiveVehicleName:Start()

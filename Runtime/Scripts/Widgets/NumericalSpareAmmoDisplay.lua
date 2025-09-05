@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses NumericalDisplay to display the spare ammo count of the player's current weapon.
 behaviour("NumericalSpareAmmoDisplay")
 
 function NumericalSpareAmmoDisplay:Start()

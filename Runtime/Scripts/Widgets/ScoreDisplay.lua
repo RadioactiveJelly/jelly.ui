@@ -1,4 +1,6 @@
--- Register the behaviour
+--Displays the player's current score from ScoreSystem in real time.
+--Also displays the player's current multiplier
+--Uses TMPRO_UGUI
 behaviour("ScoreDisplay")
 
 function ScoreDisplay:Start()

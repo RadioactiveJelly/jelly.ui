@@ -1,4 +1,4 @@
--- Register the behaviour
+--Spawns damage indicators when the player is damaged.
 behaviour("DamageIndicatorManager")
 
 function DamageIndicatorManager:Start()
@@ -16,18 +16,6 @@ function DamageIndicatorManager:Start()
 end
 
 function DamageIndicatorManager:Update()
-	-- Run every frame
-
-	--[[if Input.GetKeyDown(KeyCode.T) then
-		for i = 1, #self.affectedTeamActors, 1 do
-			if not self.affectedTeamActors[i].isPlayer and not self.affectedTeamActors[i].isDead then
-				print(self.affectedTeamActors[i].name)
-				Player.actor.Damage(self.affectedTeamActors[i], 25, 0, false, false)
-			end
-		end
-	end]]--
-
-
 	for botName, indicator in pairs(self.liveIndicators) do
 		indicator.self:Tick(Player.actor.isDead)
 		if indicator.self.isDead then
@@ -48,12 +36,6 @@ function DamageIndicatorManager:CreateIndicator(source ,targetPos)
 	if self.liveIndicators[source.name] then
 		indicator = self.liveIndicators[source.name]
 	else
-		--[[if #self.pooledIndicators > 0 then
-			indicator = table.remove(self.pooledIndicators, #self.pooledIndicators)
-		else
-			indicator = GameObject.Instantiate(self.indicatorPrefab).GetComponent(ScriptedBehaviour)
-			indicator.gameObject.transform.SetParent(self.gameObject.transform, false)
-		end]]--
 		indicator = GameObject.Instantiate(self.indicatorPrefab).GetComponent(ScriptedBehaviour)
 		indicator.gameObject.transform.SetParent(self.gameObject.transform, false)
 		self.liveIndicators[source.name] = indicator

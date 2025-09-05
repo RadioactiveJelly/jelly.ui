@@ -1,4 +1,5 @@
--- Register the behaviour
+--Simple hitmarker script.
+--Displays a red hitmarker if the damage dealt will kill the target.
 behaviour("Hitmarker")
 
 function Hitmarker:Start()

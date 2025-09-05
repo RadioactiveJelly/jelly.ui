@@ -1,4 +1,4 @@
--- Register the behaviour
+--Displays the current player's weapon name
 behaviour("WeaponName")
 
 function WeaponName:Start()

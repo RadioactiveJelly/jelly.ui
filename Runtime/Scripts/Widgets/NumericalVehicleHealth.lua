@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses NumericalDisplay to display the health of the player's current vehicle.
 behaviour("NumericalVehicleHealth")
 
 function NumericalVehicleHealth:Start()

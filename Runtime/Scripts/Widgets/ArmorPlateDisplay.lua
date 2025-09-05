@@ -1,4 +1,5 @@
--- Register the behaviour
+--Displays the player's armor plates from Player Armor
+--Also shows the keybind to use armor plates
 behaviour("ArmorPlateDisplay")
 
 function ArmorPlateDisplay:Start()

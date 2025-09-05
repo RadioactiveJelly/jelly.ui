@@ -1,4 +1,5 @@
--- Register the behaviour
+--Uses TextWithBackground script to display the player's current weapon name.
+--Use the Prefix value on the DataContainer to adjust spacing.
 behaviour("WeaponNameWithBackground")
 
 function WeaponNameWithBackground:Start()

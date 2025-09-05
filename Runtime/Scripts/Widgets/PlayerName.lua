@@ -1,4 +1,4 @@
--- Register the behaviour
+--Widget that displays the player's current display name using a TMPRO_UGUI object.
 behaviour("PlayerName")
 
 function PlayerName:Start()

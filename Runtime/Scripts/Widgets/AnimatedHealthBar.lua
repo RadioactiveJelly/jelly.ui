@@ -1,4 +1,4 @@
--- Register the behaviour
+--Uses the AnimatedBar script to display the player's current health
 behaviour("AnimatedHealthBar")
 
 function AnimatedHealthBar:Start()
