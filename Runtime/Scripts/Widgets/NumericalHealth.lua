@@ -7,10 +7,10 @@ function NumericalHealth:Start()
 	self.script.AddValueMonitor("MonitorPlayerHealth", "OnPlayerHealthChanged")
 	self.script.AddValueMonitor("MonitorPlayerMaxHealth", "OnPlayerMaxHealthChanged")
 	self.lowColor = self.targets.DataContainer.GetColor("LowColor")
-	self.normalColor = self.targets.DataContainer.GetColor("NormalColor")
+	self.defaultColor = self.targets.DataContainer.GetColor("DefaultColor")
 	self.lowThreshold = self.targets.DataContainer.GetFloat("LowThreshold")
 	GameEvents.onActorSpawn.AddListener(self,"OnActorSpawn")
-	self.targets.NumericalDisplay.self:SetColor(self.normalColor)
+	self.targets.NumericalDisplay.self:SetColor(self.defaultColor)
 end
 
 function NumericalHealth:MonitorPlayerHealth()
@@ -51,7 +51,7 @@ function NumericalHealth:UpdateDisplay()
 	if t <= self.lowThreshold then
 		numericalDisplay:SetColor(self.lowColor)
 	else
-		numericalDisplay:SetColor(self.normalColor)
+		numericalDisplay:SetColor(self.defaultColor)
 	end
 	numericalDisplay:SetValue(Player.actor.health)
 end

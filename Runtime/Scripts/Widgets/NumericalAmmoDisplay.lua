@@ -6,8 +6,8 @@ function NumericalAmmoDisplay:Start()
 	self.script.AddValueMonitor("MonitorAmmoCount", "OnAmmoCountChanged")
 	self.script.AddValueMonitor("MonitorMaxAmmoCount", "OnMaxAmmoChanged")
 	self.lowColor = self.targets.DataContainer.GetColor("LowColor")
-	self.normalColor = self.targets.DataContainer.GetColor("NormalColor")
-	self.targets.NumericalDisplay.self:SetColor(self.normalColor)
+	self.defaultColor = self.targets.DataContainer.GetColor("DefaultColor")
+	self.targets.NumericalDisplay.self:SetColor(self.defaultColor)
 end
 
 function NumericalAmmoDisplay:MonitorActiveWeapon()
@@ -33,9 +33,9 @@ function NumericalAmmoDisplay:MonitorAmmoCount()
 end
 
 function NumericalAmmoDisplay:OnAmmoCountChanged(ammo)
-	if ammo == nil or self.currentMaxAmmo == nil then self.targets.Number.text = "" return end
-
 	local numericalDisplay = self.targets.NumericalDisplay.self
+	
+	if ammo == nil or self.currentMaxAmmo == nil then numericalDisplay:ForceText("") return end
 
 	if ammo == -1 then
 		numericalDisplay:ForceText("")
@@ -46,7 +46,7 @@ function NumericalAmmoDisplay:OnAmmoCountChanged(ammo)
 	if t <= 0.35 then
 		numericalDisplay:SetColor(self.lowColor)
 	else
-		numericalDisplay:SetColor(self.normalColor)
+		numericalDisplay:SetColor(self.defaultColor)
 	end
 
 	numericalDisplay:SetValue(ammo)
