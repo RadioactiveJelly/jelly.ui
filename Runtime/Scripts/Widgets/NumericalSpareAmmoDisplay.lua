@@ -1,65 +1,67 @@
 -- Register the behaviour
-behaviour("NumericalAmmoDisplay")
+behaviour("NumericalSpareAmmoDisplay")
 
-function NumericalAmmoDisplay:Start()
+function NumericalSpareAmmoDisplay:Start()
 	self.script.AddValueMonitor("MonitorActiveWeapon", "OnActiveWeaponChanged")
 	self.script.AddValueMonitor("MonitorAmmoCount", "OnAmmoCountChanged")
-	self.script.AddValueMonitor("MonitorMaxAmmoCount", "OnMaxAmmoChanged")
+	self.script.AddValueMonitor("MonitorMaxSpareAmmoCount", "OnMaxSpareAmmoChanged")
 	self.lowColor = self.targets.DataContainer.GetColor("LowColor")
 	self.normalColor = self.targets.DataContainer.GetColor("NormalColor")
 	self.targets.NumericalDisplay.self:SetColor(self.normalColor)
 end
 
-function NumericalAmmoDisplay:MonitorActiveWeapon()
+function NumericalSpareAmmoDisplay:MonitorActiveWeapon()
 	if Player.actor == nil then return nil end
 	if Player.actor.activeWeapon == nil then return nil end
 
 	return Player.actor.activeWeapon.activeSubWeapon
 end
 
-function NumericalAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
+function NumericalSpareAmmoDisplay:OnActiveWeaponChanged(activeWeapon)
 	if activeWeapon == nil then return end
 	
-	self.currentMaxAmmo = activeWeapon.maxAmmo
+	self.currentMaxSpareAmmo = activeWeapon.maxSpareAmmo
 	local numericalDisplay = self.targets.NumericalDisplay.self
-	numericalDisplay:SetMaximum(self.currentMaxAmmo)
+	numericalDisplay:SetMaximum(self.currentMaxSpareAmmo)
 end
 
-function NumericalAmmoDisplay:MonitorAmmoCount()
+function NumericalSpareAmmoDisplay:MonitorAmmoCount()
 	if Player.actor == nil then return end
 	if Player.actor.activeWeapon == nil then return end
 
-	return Player.actor.activeWeapon.activeSubWeapon.ammo
+	return Player.actor.activeWeapon.activeSubWeapon.spareAmmo
 end
 
-function NumericalAmmoDisplay:OnAmmoCountChanged(ammo)
-	if ammo == nil or self.currentMaxAmmo == nil then self.targets.Number.text = "" return end
+function NumericalSpareAmmoDisplay:OnAmmoCountChanged(spareAmmo)
+	if spareAmmo == nil or self.currentMaxSpareAmmo == nil then self.targets.Number.text = "" return end
 
-	local numericalDisplay = self.targets.NumericalDisplay.self
-
-	if ammo == -1 then
+	if spareAmmo == -1 then
 		numericalDisplay:ForceText("")
+		return
+	elseif spareAmmo == -2 then
+		numericalDisplay:ForceText("∞")
 		return
 	end
 
-	local t = ammo/self.currentMaxAmmo
+	local numericalDisplay = self.targets.NumericalDisplay.self
+	local t = spareAmmo/self.currentMaxSpareAmmo
 	if t <= 0.35 then
 		numericalDisplay:SetColor(self.lowColor)
 	else
 		numericalDisplay:SetColor(self.normalColor)
 	end
 
-	numericalDisplay:SetValue(ammo)
+	numericalDisplay:SetValue(spareAmmo)
 end
 
-function NumericalAmmoDisplay:MonitorMaxAmmoCount()
+function NumericalSpareAmmoDisplay:MonitorMaxAmmoCount()
 	if Player.actor == nil then return end
 	if Player.actor.activeWeapon == nil then return end
 
-	return Player.actor.activeWeapon.activeSubWeapon.maxAmmo
+	return Player.actor.activeWeapon.activeSubWeapon.maxSpareAmmo
 end
 
-function NumericalAmmoDisplay:OnMaxAmmoChanged(val)
+function NumericalSpareAmmoDisplay:OnMaxAmmoChanged(val)
 	if val == nil then return end
 
 	local numericalDisplay = self.targets.NumericalDisplay.self

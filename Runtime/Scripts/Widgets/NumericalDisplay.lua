@@ -2,11 +2,13 @@
 behaviour("NumericalDisplay")
 
 function NumericalDisplay:Start()
-	self.digitLimit = self.targets.DataContainer.GetInt("MaxDigitLimit")
+	self.maximumDigits = self.targets.DataContainer.GetInt("MaxDigitLimit")
+	self.minimumDigits = self.targets.DataContainer.GetInt("MinimumDigitLimit")
 	self.zeroOpacity = self.targets.DataContainer.GetInt("ZeroOpacity")
 	self.displayMax = self.targets.DataContainer.GetFloat("DisplayMax")
 	self.zeroColor = self.targets.DataContainer.GetColor("ZeroColor")
 	self.displayZeroes = self.targets.DataContainer.GetBool("DisplayZeroes")
+	self.forceMaxDigits = self.targets.DataContainer.GetBool("ForceMaxDigits")
 
 	self.currentValue = 0
 	self.maximumValue = 0
@@ -32,8 +34,13 @@ function NumericalDisplay:SetMaximum(val)
 end
 
 function NumericalDisplay:UpdateMaxDigits()
-	self.maxDigits = self:GetDigits(self.maximumValue)
-	if self.maxDigits > self.digitLimit then self.maxDigits = self.digitLimit end
+	local maxDigits = self.maximumDigits
+	if not self.forceMaxDigits then
+		maxDigits = self:GetDigits(self.maximumValue)
+	end
+	maxDigits = Mathf.Clamp(maxDigits, self.minimumDigits, self.maximumDigits)
+
+	self.maxDigits = maxDigits
 	
 	self:UpdateDisplay()
 end
@@ -43,8 +50,8 @@ function NumericalDisplay:GetDigits(num)
 	return (num == 0) and 1 or Mathf.Floor(Mathf.Log10(Mathf.Abs(num))) + 1
 end
 
-function NumericalDisplay:Empty()
-	self.targets.Number.text = ""
+function NumericalDisplay:ForceText(text)
+	self.targets.Number.text = text
 end
 
 function NumericalDisplay:UpdateDisplay()
