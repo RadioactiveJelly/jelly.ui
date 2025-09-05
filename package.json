@@ -13,5 +13,11 @@
     "custom-package",
     "tools",
     "ravenfield"
-  ]
+  ],
+  "samples": [
+  {
+    "displayName": "Examples and Prefabs",
+    "description": "An example HUD and premade prefabs for easier HUD creation",
+    "path": "Samples~/Examples"
+  }]
 }
